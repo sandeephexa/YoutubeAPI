@@ -73,7 +73,8 @@ function handleSignoutClick() {
 }
 
  function showChannelData(data){
-   const channelData = document.getElementById('#channel-data');
+   console.log("inside show channel data");
+   const channelData = document.getElementById('channel-data');
    channelData.innerHTML = data;
  }
       /**
