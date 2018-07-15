@@ -80,6 +80,7 @@ function handleSignoutClick() {
        * Print files. new line
        */
       function getChannel(channel) {
+        console.log("default channel "+channel);
         gapi.client.youtube.channels.list({
           'part': 'snippet,contentDetails,statistics',
           'forUsername': channel
