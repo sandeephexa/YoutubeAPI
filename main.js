@@ -74,10 +74,22 @@ function handleSignoutClick() {
 
 
       /**
-       * Print files.
+       * Print files. new line
        */
-function getChannel(channel) {
-       console.log(channel);
-}
+      function getChannel() {
+        gapi.client.youtube.channels.list({
+          'part': 'snippet,contentDetails,statistics',
+          'forUsername': 'GoogleDevelopers'
+        }).then(function(response) {
+          console.log(response);
+          // var channel = response.result.items[0];
+          // appendPre('This channel\'s ID is ' + channel.id + '. ' +
+          //           'Its title is \'' + channel.snippet.title + ', ' +
+          //           'and it has ' + channel.statistics.viewCount + ' views.');
+        })
+        .catch(function(err){
+          alert('no channels by that name');
+        })
+      }
 
 
