@@ -79,7 +79,7 @@ function handleSignoutClick() {
       /**
        * Print files. new line
        */
-      function getChannel() {
+      function getChannel(channel) {
         gapi.client.youtube.channels.list({
           'part': 'snippet,contentDetails,statistics',
           'forUsername': channel
