@@ -132,6 +132,6 @@ function handleSignoutClick() {
               part : 'snippet',
               maxResultss : 10
             }
-           const request = gapi.client.youtube.plalistItems.list(requestOptions);
+           const request = gapi.client.youtube.playlistItems.list(requestOptions);
            request.execute((resp) => console.log("videos "+resp));
       }
