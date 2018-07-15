@@ -43,16 +43,20 @@ function initClient() {
        *  Called when the signed in status changes, to update the UI
        *  appropriately. After a sign-in, the API is called.
        */
-function updateSigninStatus(isSignedIn) {
+      function updateSigninStatus(isSignedIn) {
         if (isSignedIn) {
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
+          content.style.display = 'block';
+          videoContainer.style.display = 'block';
           getChannel(defaultChannel);
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
+          content.style.display = 'none';
+          videoContainer.style.display = 'none';
         }
-}
+      }
 
  /**
        *  Sign in the user upon button click.
@@ -64,7 +68,7 @@ function handleAuthClick(event) {
       /**
        *  Sign out the user upon button click.
        */
-function handleSignoutClick(event) {
+function handleSignoutClick() {
         gapi.auth2.getAuthInstance().signOut();
 }
 
@@ -72,17 +76,8 @@ function handleSignoutClick(event) {
       /**
        * Print files.
        */
-function getChannel() {
-        gapi.client.youtube.channels.list({
-          'part': 'snippet,contentDetails,statistics',
-          'forUsername': 'GoogleDevelopers'
-        }).then(function(response) {
-          var channel = response.result.items[0];
-          appendPre('This channel\'s ID is ' + channel.id + '. ' +
-                    'Its title is \'' + channel.snippet.title + ', ' +
-                    'and it has ' + channel.statistics.viewCount + ' views.');
-        });
+function getChannel(channel) {
+       console.log(channel);
 }
-
 
 
