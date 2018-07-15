@@ -137,7 +137,7 @@ function handleSignoutClick() {
              console.log("videos "+resp);
              const playlistItems = resp.result.items;
              if(playlistItems){
-               let output = `<h4 class="center-align">Latest Videos</h4>`;
+               let output = `<br><h4 class="center-align">Latest Videos</h4>`;
                playlistItems.forEach(item => {
                  const videoId = item.snippet.resourceId.videoId;
                  output += `<div class="col s3">
