@@ -14,6 +14,13 @@ const videoContainer = document.getElementById('video-container');
 
 const defaultChannel = 'GoogleDevelopers';
 
+// form submit
+channelForm.addEventListener('submit', e=>{
+  e.preventDefault();
+  var channel = channelInput.value;
+
+  getChannel(channel);
+});
 // load Auth2 library
 function handleClientLoad(){
     gapi.load('client:auth2',initClient);
