@@ -17,7 +17,8 @@ const defaultChannel = 'GoogleDevelopers';
 // form submit
 channelForm.addEventListener('submit', e=>{
   e.preventDefault();
-  var channel = channelInput.value;
+  console.log("inside form submit");
+  const channel = channelInput.value;
 
   getChannel(channel);
 });
@@ -87,8 +88,8 @@ function handleSignoutClick() {
       /**
        * Print files. new line
        */
-      function getChannel(channel) {
-        console.log("default channel "+channel);
+      function getChannel(channel) { 
+        console.log("channel "+channel);
         gapi.client.youtube.channels.list({
           'part': 'snippet,contentDetails,statistics',
           'forUsername': channel
