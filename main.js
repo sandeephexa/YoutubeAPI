@@ -89,7 +89,7 @@ function handleSignoutClick() {
        * Print files. new line
        */
       function getChannel(channel) { 
-        console.log("channel "+channel);
+        console.log("inside getchannel "+channel);
         gapi.client.youtube.channels.list({
           'part': 'snippet,contentDetails,statistics',
           'forUsername': channel
@@ -111,6 +111,7 @@ function handleSignoutClick() {
           showChannelData(output);
          // playlist info
          const playlistId = channel.contentDetails.relatedPlaylists.uploads;
+         console.log("playlist id "+playlistId);
          videoPlaylist(playlistId);
         })
         .catch(function(err){
@@ -125,11 +126,12 @@ function handleSignoutClick() {
 
       // video playlist
      function videoPlaylist(playlistId){
+       console.log("inside video playlist");
             const requestOptions = {
               playlistId : playlistId,
               part : 'snippet',
               maxResultss : 10
             }
            const request = gapi.client.youtube.plalistItems.list(requestOptions);
-           request.execute(resp => console.log("videos"+resp));
+           request.execute((resp) => console.log("videos "+resp));
       }
