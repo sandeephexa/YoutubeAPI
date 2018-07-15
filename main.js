@@ -133,5 +133,23 @@ function handleSignoutClick() {
               maxResultss : 10
             }
            const request = gapi.client.youtube.playlistItems.list(requestOptions);
-           request.execute((resp) => console.log("videos "+JSON.stringify(resp)));
+           request.execute(resp =>{
+             console.log("videos "+resp);
+             const playlistItems = resp.result.items;
+             if(playlistItems){
+               let output = `<h4 class="center-align">Latest Videos</h4>`;
+               playlistItems.forEach(item => {
+                 const videoId = item.snippet.resourceId.videoId;
+                 output += `<div class="col s3">
+                 <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                 </div>`;
+               })
+
+               // output the videos
+               videoContainer.innerHTML = output;
+             }
+             else{
+               videoContainer.innerHTML = "no uploads for this channel";
+             } 
+           });
       }
