@@ -99,9 +99,9 @@ function handleSignoutClick() {
           const output = `<ul class="collection">
           <li class="collection-item">Title : ${channel.snippet.title}</li>
           <li class="collection-item">ID : ${channel.id}</li>
-          <li class="collection-item">Subscribers : ${channel.statistics.subscriberCount}</li>
-          <li class="collection-item">Views : ${channel.statistics.viewCount}</li>
-          <li class="collection-item">Videos :  ${channel.statistics.videoCount}</li>
+          <li class="collection-item">Subscribers : ${numberWithCommas(channel.statistics.subscriberCount)}</li>
+          <li class="collection-item">Views : ${numberWithCommas(channel.statistics.viewCount)}</li>
+          <li class="collection-item">Videos :  ${numberWithCommas(channel.statistics.videoCount)}</li>
           </ul>
           <p>${channel.snippet.description}</p>
           <hr>
@@ -116,4 +116,7 @@ function handleSignoutClick() {
         })
       }
 
-
+      // number formatting
+      function numberWithCommas() {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
